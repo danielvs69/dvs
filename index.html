@@ -8,60 +8,124 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
   body { background-color: #111113; color: #ffffff; line-height: 1.6; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-  .container { max-width: 800px; width: 100%; padding: 40px 20px; text-align: center; }
+  .container { max-width: 700px; width: 100%; padding: 40px 16px; text-align: center; }
   
-  .logo-box { width: 84px; height: 84px; border-radius: 50%; background: #ffffff; border: 3px solid #facc15; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+  /* Header / App Header */
+  .logo-box { width: 76px; height: 76px; border-radius: 20px; background: #ffffff; border: 2px solid #3f3f46; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
   .logo-box img { width: 100%; height: 100%; object-fit: cover; }
 
-  h1 { font-size: 38px; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.5px; }
+  h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
   h1 span { color: #16a34a; }
-  .subtitle { font-size: 18px; color: #a1a1aa; font-weight: 600; margin-bottom: 32px; max-width: 650px; margin-left: auto; margin-right: auto; }
+  .subtitle { font-size: 16px; color: #a1a1aa; font-weight: 500; margin-bottom: 24px; max-width: 550px; margin-left: auto; margin-right: auto; }
 
-  .cta-group { display: flex; justify-content: center; margin-bottom: 50px; }
-  .btn { padding: 16px 36px; border-radius: 12px; font-size: 18px; font-weight: 900; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: transform 0.1s, opacity 0.2s; }
-  .btn:active { transform: scale(0.96); }
-  .btn-primary { background: #16a34a; color: #ffffff; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.4); }
+  /* CTA Button */
+  .cta-group { margin-bottom: 36px; }
+  .btn-primary { background: #16a34a; color: #ffffff; padding: 14px 32px; border-radius: 14px; font-size: 17px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(22, 163, 74, 0.4); transition: transform 0.1s, opacity 0.2s; }
+  .btn-primary:active { transform: scale(0.96); }
 
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; text-align: left; margin-bottom: 50px; }
-  .feature-card { background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 16px; padding: 22px; }
-  .feature-icon { font-size: 26px; margin-bottom: 10px; }
-  .feature-title { font-size: 17px; font-weight: 900; color: #ffffff; margin-bottom: 6px; }
-  .feature-desc { font-size: 14px; color: #a1a1aa; font-weight: 600; }
+  /* Apple Store style Screenshot Carousel */
+  .carousel-container { display: flex; overflow-x: auto; gap: 16px; padding-bottom: 16px; margin-bottom: 40px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; justify-content: flex-start; }
+  .carousel-container::-webkit-scrollbar { height: 6px; }
+  .carousel-container::-webkit-scrollbar-track { background: #1c1c1e; border-radius: 3px; }
+  .carousel-container::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+  
+  .screenshot-card { flex: 0 0 220px; height: 440px; background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 24px; overflow: hidden; scroll-snap-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; position: relative; }
+  .screenshot-card img { width: 100%; height: 100%; object-fit: cover; }
+  .screenshot-placeholder { color: #71717a; font-size: 14px; font-weight: 600; padding: 20px; text-align: center; }
 
-  .footer { font-size: 13px; color: #71717a; font-weight: 700; border-top: 1px solid #2c2c2e; width: 100%; max-width: 800px; padding-top: 20px; margin-top: auto; text-align: center; }
+  /* Sections */
+  .section-title { font-size: 22px; font-weight: 700; text-align: left; margin-bottom: 16px; letter-spacing: -0.3px; }
+  
+  .features-list { text-align: left; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; }
+  .feature-item { background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 14px; padding: 16px 20px; display: flex; gap: 14px; align-items: flex-start; }
+  .feature-icon { font-size: 22px; margin-top: 2px; }
+  .feature-content h3 { font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 2px; }
+  .feature-content p { font-size: 13px; color: #a1a1aa; font-weight: 500; line-height: 1.5; }
+
+  /* Installation Guide */
+  .install-box { background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 16px; padding: 24px; text-align: left; margin-bottom: 40px; }
+  .install-steps { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+  .install-steps li { font-size: 14px; color: #d4d4d8; display: flex; gap: 10px; align-items: flex-start; }
+  .install-steps li strong { color: #ffffff; }
+
+  .footer { font-size: 13px; color: #71717a; font-weight: 600; border-top: 1px solid #2c2c2e; width: 100%; max-width: 700px; padding-top: 20px; margin-top: auto; text-align: center; }
 </style>
 </head>
 <body>
 
   <div class="container">
+    <!-- App Header -->
     <div class="logo-box">
       <img src="DaPitchLogo.png" alt="Da Pitch Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2746%27 fill=%27%23facc15%27/%3E%3C/svg%3E';">
     </div>
 
     <h1>Da <span>Pitch</span> ⚽⏱️</h1>
-    <p class="subtitle">Da Pitch is a lightning-fast, minimalist Progressive Web App (PWA) designed specifically for football coaches along the sideline. Real-time stopwatch tracking, fair playing time distribution, and seamless rotation management.</p>
+    <p class="subtitle">Da Pitch is a lightning-fast, minimalist Progressive Web App (PWA) designed specifically for football coaches along the sideline.</p>
 
     <div class="cta-group">
-      <a href="https://danielvs69.github.io/DaPitch/" class="btn btn-primary">🚀 Start Da Pitch App</a>
+      <a href="https://danielvs69.github.io/DaPitch/" class="btn-primary">🚀 Launch App</a>
     </div>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">⏱️</div>
-        <div class="feature-title">Live Sideline Stopwatch</div>
-        <div class="feature-desc">A real-time running timer tracking exact playing minutes per player second-by-second during the match.</div>
+    <!-- Apple Store style Screenshots Carousel (.jpeg) -->
+    <div class="carousel-container">
+      <div class="screenshot-card">
+        <img src="screenshot1.jpeg" alt="Live Sideline Stopwatch" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="screenshot-placeholder" style="display:none;">📱 Live Stopwatch Screen</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <div class="feature-title">Playing Time Analytics</div>
-        <div class="feature-desc">Instant indicators and progress bars showing each player's relative playing time compared to match duration.</div>
+      <div class="screenshot-card">
+        <img src="screenshot2.jpeg" alt="Playing Time Analytics" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="screenshot-placeholder" style="display:none;">📊 Playing Time Analytics</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔄</div>
-        <div class="feature-title">Substitutions & Formations</div>
-        <div class="feature-desc">Easily manage minute blocks and formations across 11v11, 8v8, and 6v6 formats.</div>
+      <div class="screenshot-card">
+        <img src="screenshot3.jpeg" alt="Line-Up & Substitutions" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="screenshot-placeholder" style="display:none;">🔄 Formations & Subs</div>
       </div>
     </div>
+
+    <!-- Features Section -->
+    <h2 class="section-title">Key Features</h2>
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-icon">⏱️</div>
+        <div class="feature-content">
+          <h3>Live Sideline Stopwatch</h3>
+          <p>A real-time running timer tracking exact playing minutes per player second-by-second during the match.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📊</div>
+        <div class="feature-content">
+          <h3>Playing Time Analytics</h3>
+          <p>Instant color-coded indicators and progress bars showing each player's relative playing time compared to match duration.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-content">
+          <h3>Substitutions & Formations</h3>
+          <p>Easily manage minute blocks and formations across 11v11, 8v8, and 6v6 match formats.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📤</div>
+        <div class="feature-content">
+          <h3>Universal WhatsApp Share</h3>
+          <p>Generate and copy clean, professional match summaries or playing time overviews to share directly with your team.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Installation Instructions -->
+    <h2 class="section-title">How to Install</h2>
+    <div class="install-box">
+      <p style="font-size: 14px; color: #a1a1aa; margin-bottom: 12px;">Because Da Pitch is a Progressive Web App, you can install it instantly on your phone without an app store:</p>
+      <ul class="install-steps">
+        <li><span>1.</span> Open the app via the <strong>Launch App</strong> button above on your phone.</li>
+        <li><span>2.</span> <strong>iPhone (Safari):</strong> Tap the Share button at the bottom and select <em>'Add to Home Screen'</em>.</li>
+        <li><span>3.</span> <strong>Android (Chrome):</strong> Tap the menu (three dots) in the top right and select <em>'Add to Home screen'</em> or <em>'Install app'</em>.</li>
+      </ul>
+    </div>
+
   </div>
 
   <div class="footer">
