@@ -38,15 +38,25 @@
   .features-list li { font-size: 17px; color: #d4d4d8; font-weight: 500; line-height: 1.5; }
 
   /* Installation Guide in dezelfde grootte, zonder vetgedrukte stukken */
-  .install-box { background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 16px; padding: 24px 28px; text-align: left; margin-bottom: 40px; }
+  .install-box { background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 16px; padding: 24px 28px; text-align: left; margin-bottom: 30px; }
   .install-steps { list-style: none; display: flex; flex-direction: column; gap: 16px; }
   .install-steps li { font-size: 17px; color: #d4d4d8; font-weight: 500; line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
   .install-sub { font-size: 17px; color: #d4d4d8; margin-top: 8px; display: block; line-height: 1.5; }
 
-  /* CTA Button helemaal onderaan */
+  /* CTA Button */
   .cta-group { margin-bottom: 45px; }
   .btn-primary { background: #16a34a; color: #ffffff; padding: 16px 36px; border-radius: 14px; font-size: 18px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(22, 163, 74, 0.4); transition: transform 0.1s, opacity 0.2s; }
   .btn-primary:active { transform: scale(0.96); }
+
+  /* FAQ Box & Items */
+  .faq-box { background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 16px; padding: 24px 28px; text-align: left; margin-bottom: 45px; display: flex; flex-direction: column; gap: 16px; }
+  .faq-item { border-bottom: 1px solid #2c2c2e; padding-bottom: 16px; }
+  .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-item summary { font-weight: 600; font-size: 17px; color: #ffffff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-size: 20px; font-weight: 400; color: #16a34a; margin-left: 1rem; }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item p { margin-top: 10px; color: #d4d4d8; font-size: 16px; line-height: 1.5; }
 
   /* Footer / About */
   .footer { font-size: 14px; color: #71717a; font-weight: 600; border-top: 1px solid #2c2c2e; width: 100%; max-width: 800px; padding-top: 24px; margin-top: auto; text-align: center; line-height: 1.8; }
@@ -127,9 +137,48 @@
       </ul>
     </div>
 
-    <!-- Launch CTA onderaan -->
+    <!-- Launch CTA -->
     <div class="cta-group">
       <a href="https://danielvs69.github.io/DaPitch/" class="btn-primary">Launch App</a>
+    </div>
+
+    <!-- Frequently Asked Questions -->
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-box">
+      <details class="faq-item">
+        <summary>How do I install the app on my phone?</summary>
+        <p>You don't need an app store. Simply open the app in your phone's browser (Safari on iOS or Chrome on Android) and select "Add to Home Screen" from your browser menu. The app will install instantly with its own icon on your home screen.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is a PWA (Progressive Web App)?</summary>
+        <p>A Progressive Web App is a modern web application that gives you the best of both worlds: the accessibility of a website and the smooth, fullscreen experience of a native app.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is the app really open source and free?</summary>
+        <p>Yes, absolutely! The entire codebase is open source and hosted on GitHub. There are no paid tiers, hidden subscriptions, or ads—it is built purely as a free tool to help coaches manage their teams with ease.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How is my data and privacy handled?</summary>
+        <p>Your data stays entirely with you. There is zero external tracking or data collection; everything—including your team configurations, line-ups, and player rosters—is stored locally on your own device.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does the app work offline?</summary>
+        <p>Yes, perfectly! Because the app and all its data run entirely locally on your device, you don't need an internet connection. You can manage your team and review line-ups even when you are standing on a remote football pitch with zero reception.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do updates work in a PWA?</summary>
+        <p>You never have to manually update the app through an app store. Whenever you open the app with an active internet connection, it automatically fetches the latest improvements from GitHub in the background, while your local team data remains safely intact.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do you work with multiple line-ups and substitutions?</summary>
+        <p>You can easily prepare multiple tactical line-ups ahead of time. This allows you to preview a planned setup with a single click and seamlessly execute multiple substitutions at once when it's time to rotate your squad during the match.</p>
+      </details>
     </div>
 
   </div>
